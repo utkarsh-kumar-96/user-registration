@@ -17,19 +17,29 @@ public class AppUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String password;
+    private String email;
 
     @Enumerated(EnumType.ORDINAL)
     private AppUserRole appUserRole;
+
+    @Column(columnDefinition = "boolean default false")
     private Boolean locked;
+
+    @Column(columnDefinition = "boolean default false")
     private Boolean enabled;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
         return Collections.singleton(authority);
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 
     @Override
