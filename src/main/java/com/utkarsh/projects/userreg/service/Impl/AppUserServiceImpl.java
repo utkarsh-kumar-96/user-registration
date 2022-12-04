@@ -52,6 +52,6 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
         appUser.setLastName(request.getLastName());
         String encodedPass = bCryptPasswordEncoder.encode(request.getPassword());
         appUser.setPassword(encodedPass);
-        return null;
+        return appUser;
     }
 }
