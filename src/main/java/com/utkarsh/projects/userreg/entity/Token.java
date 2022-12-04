@@ -25,7 +25,7 @@ public class Token {
     @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean confirmed;
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime confirmedOn;
 
     @ManyToOne

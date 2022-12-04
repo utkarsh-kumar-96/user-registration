@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 @Service
 public class TokenServiceImpl implements TokenService {
@@ -24,8 +25,15 @@ public class TokenServiceImpl implements TokenService {
         regToken.setCreatedOn(now);
         regToken.setExpiredOn(now.plus(15, ChronoUnit.MINUTES));
         regToken.setAppUser(appUser);
-        regToken.setConfirmed(Boolean.TRUE);
-        regToken.setConfirmedOn(now);
         tokenRepository.save(regToken);
+    }
+
+    @Override
+    public void confirmToken(String token) {
+        Token TOKEN = tokenRepository.findByToken(token)
+                .orElseThrow(() -> new IllegalArgumentException("token not found with token id " + token));
+        TOKEN.setConfirmed(Boolean.TRUE);
+        TOKEN.setConfirmedOn(LocalDateTime.now());
+        tokenRepository.save(TOKEN);
     }
 }

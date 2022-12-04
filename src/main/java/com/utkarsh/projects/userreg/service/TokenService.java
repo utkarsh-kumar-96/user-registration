@@ -4,4 +4,5 @@ import com.utkarsh.projects.userreg.entity.AppUser;
 
 public interface TokenService {
     void saveToken(String token, AppUser appUser);
+    void confirmToken(String token);
 }
