@@ -5,7 +5,6 @@ import com.utkarsh.projects.userreg.service.AppUserService;
 import com.utkarsh.projects.userreg.service.RegistrationService;
 import com.utkarsh.projects.userreg.util.CommonUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
