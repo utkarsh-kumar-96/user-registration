@@ -22,7 +22,7 @@ public class Token {
     @Column(nullable = false)
     private LocalDateTime expiredOn;
 
-    @Column(nullable = false, columnDefinition = "boolean default false")
+    @Column(nullable = false)
     private Boolean confirmed;
 
     @Column

@@ -24,6 +24,7 @@ public class TokenServiceImpl implements TokenService {
         regToken.setToken(token);
         regToken.setCreatedOn(now);
         regToken.setExpiredOn(now.plus(15, ChronoUnit.MINUTES));
+        regToken.setConfirmed(false);
         regToken.setAppUser(appUser);
         tokenRepository.save(regToken);
     }

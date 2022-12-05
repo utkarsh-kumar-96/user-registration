@@ -2,6 +2,7 @@ package com.utkarsh.projects.userreg.service.Impl;
 
 import com.utkarsh.projects.userreg.model.RegistrationRequest;
 import com.utkarsh.projects.userreg.service.AppUserService;
+import com.utkarsh.projects.userreg.service.EmailSender;
 import com.utkarsh.projects.userreg.service.RegistrationService;
 import com.utkarsh.projects.userreg.util.CommonUtil;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,4 @@ public class RegistrationServiceImpl implements RegistrationService {
         boolean isEmailValid = CommonUtil.validateEmail(request.getEmail());
         return appUserService.signUpUser(request);
     }
-
-
 }
