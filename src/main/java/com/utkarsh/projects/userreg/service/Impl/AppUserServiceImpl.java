@@ -1,6 +1,7 @@
 package com.utkarsh.projects.userreg.service.Impl;
 
 import com.utkarsh.projects.userreg.entity.AppUser;
+import com.utkarsh.projects.userreg.enums.AppUserRole;
 import com.utkarsh.projects.userreg.model.RegistrationRequest;
 import com.utkarsh.projects.userreg.repository.AppUserRepository;
 import com.utkarsh.projects.userreg.service.AppUserService;
@@ -130,6 +131,11 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
         appUser.setPassword(encodedPass);
         appUser.setLocked(false);
         appUser.setEnabled(true);
+        if(AppUserRole.ADMIN.name().equalsIgnoreCase("admin")) {
+            appUser.setAppUserRole(AppUserRole.ADMIN);
+        } else {
+            appUser.setAppUserRole(AppUserRole.USER);
+        }
         return appUser;
     }
 }
